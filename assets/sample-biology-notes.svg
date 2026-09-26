@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="paperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffdfa"/>
+      <stop offset="100%" stop-color="#f5efe6"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Notebook Page -->
+  <rect x="20" y="20" width="560" height="360" rx="12" fill="url(#paperGrad)" filter="url(#shadow)"/>
+  
+  <!-- Left Margin Line -->
+  <line x1="100" y1="20" x2="100" y2="380" stroke="#fca5a5" stroke-width="2"/>
+  
+  <!-- Horizontal Ruled Lines -->
+  <line x1="20" y1="70" x2="580" y2="70" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="110" x2="580" y2="110" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="150" x2="580" y2="150" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="190" x2="580" y2="190" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="230" x2="580" y2="230" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="270" x2="580" y2="270" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="310" x2="580" y2="310" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="20" y1="350" x2="580" y2="350" stroke="#cbd5e1" stroke-width="1"/>
+  
+  <!-- Handwritten Style Text -->
+  <text x="120" y="58" font-family="'Caveat', 'Comic Sans MS', cursive, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">
+    Bio Ch. 4: Cell Respiration &amp; ATP
+  </text>
+  <rect x="115" y="42" width="310" height="22" fill="#fef08a" opacity="0.45" rx="3"/>
+  
+  <text x="120" y="98" font-family="'Caveat', 'Comic Sans MS', cursive, sans-serif" font-size="16" fill="#334155">
+    • Glycolysis occurs in cytoplasm (Anaerobic: No O2 required)
+  </text>
+  <text x="120" y="138" font-family="'Caveat', 'Comic Sans MS', cursive, sans-serif" font-size="16" fill="#334155">
+    • Net Yield: 2 ATP + 2 NADH + 2 Pyruvate molecules
+  </text>
+  
+  <!-- Formula highlight box -->
+  <rect x="120" y="165" width="410" height="50" rx="8" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="135" y="195" font-family="'Courier New', monospace" font-size="15" font-weight="bold" fill="#0369a1">
+    C6H12O6 + 6 O2  ==>  6 CO2 + 6 H2O + 36-38 ATP
+  </text>
+  
+  <text x="120" y="258" font-family="'Caveat', 'Comic Sans MS', cursive, sans-serif" font-size="16" fill="#334155">
+    • Krebs Cycle (Citric Acid Cycle) in Mitochondrial Matrix
+  </text>
+  <text x="120" y="298" font-family="'Caveat', 'Comic Sans MS', cursive, sans-serif" font-size="16" fill="#334155">
+    • Electron Transport Chain (ETC): Inner mitochondrial membrane
+  </text>
+  <text x="120" y="338" font-family="'Caveat', 'Comic Sans MS', cursive, sans-serif" font-size="16" font-weight="bold" fill="#dc2626">
+    ★ Exam Alert: Oxygen is the final electron acceptor in ETC!
+  </text>
+</svg>

@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ai Task — Modern AI-Powered Student Productivity Suite</title>
+  <meta name="description" content="Empower your learning with AI: Generate resumes, Cornell study notes, PPT presentations, syllabus mind maps, Google Sheets database, interactive quizzes, doubt tutor, flashcards, timetable planners, and photo notes OCR summaries.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       Top Navigation Bar
+       =================================================================== -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container">
+      <!-- Brand Logo matching Ada style -->
+      <a href="#home" class="nav-brand" data-view-target="home">
+        <div class="brand-icon">
+          <img src="assets/logo.svg" alt="StudyAI Logo" width="34" height="34">
+        </div>
+        <span class="brand-name">AiTask</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active" data-view="home" data-view-target="home">Home</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#features" class="nav-link dropdown-toggle" id="featuresDropdownBtn" data-view-target="home">
+              <span>Features</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+            <div class="features-dropdown-menu" id="featuresDropdownMenu">
+              <div class="dropdown-header">
+                <span>AI Student Academic Suite</span>
+                <span class="dropdown-badge">10 Tools</span>
+              </div>
+              <div class="dropdown-grid">
+                <a href="pages/resume.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #eef2ff; color: #4f46e5;">💼</span>
+                  <div>
+                    <div class="dropdown-title">Task 1: AI Resume Builder</div>
+                    <div class="dropdown-desc">ATS optimization, templates &amp; PDF</div>
+                  </div>
+                </a>
+                <a href="pages/notes.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: var(--primary-light); color: var(--primary);">📘</span>
+                  <div>
+                    <div class="dropdown-title">Task 2: AI Notes Generator</div>
+                    <div class="dropdown-desc">Cornell notes &amp; Markdown sheets</div>
+                  </div>
+                </a>
+                <a href="pages/ppt.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #e0f2fe; color: #0284c7;">📊</span>
+                  <div>
+                    <div class="dropdown-title">Task 3: Presentation (PPT)</div>
+                    <div class="dropdown-desc">Structured slide deck &amp; PPTX export</div>
+                  </div>
+                </a>
+                <a href="pages/mindmap.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #fdf4ff; color: #a21caf;">🧠</span>
+                  <div>
+                    <div class="dropdown-title">Task 4: Syllabus Mind Map</div>
+                    <div class="dropdown-desc">Visual tree hierarchy &amp; outlines</div>
+                  </div>
+                </a>
+                <a href="pages/sheets.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #ecfdf5; color: #059669;">📈</span>
+                  <div>
+                    <div class="dropdown-title">Task 5: Google Sheets Backend</div>
+                    <div class="dropdown-desc">Live database &amp; AI trend insights</div>
+                  </div>
+                </a>
+                <a href="pages/quiz.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: var(--success-light); color: var(--success);">📝</span>
+                  <div>
+                    <div class="dropdown-title">Task 6: Dynamic Quiz / MCQ</div>
+                    <div class="dropdown-desc">Custom questions &amp; instant feedback</div>
+                  </div>
+                </a>
+                <a href="pages/doubts.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #ecfeff; color: #0891b2;">💬</span>
+                  <div>
+                    <div class="dropdown-title">Task 7: Doubt Solver Bot</div>
+                    <div class="dropdown-desc">24/7 tutor with speech read-out</div>
+                  </div>
+                </a>
+                <a href="pages/flashcards.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #fffbeb; color: #d97706;">🗂</span>
+                  <div>
+                    <div class="dropdown-title">Task 8: AI 3D Flashcards</div>
+                    <div class="dropdown-desc">Active recall &amp; flippable revision</div>
+                  </div>
+                </a>
+                <a href="pages/planner.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #f5f3ff; color: #7c3aed;">📅</span>
+                  <div>
+                    <div class="dropdown-title">Task 9: Study Timetable</div>
+                    <div class="dropdown-desc">Day-wise schedule &amp; checklist</div>
+                  </div>
+                </a>
+                <a href="pages/ocr.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #fef2f2; color: #dc2626;">📸</span>
+                  <div>
+                    <div class="dropdown-title">Task 10: Photo Notes OCR</div>
+                    <div class="dropdown-desc">Extract text &amp; synthesize summary</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer">
+                <a href="#features" class="dropdown-view-all" data-view-target="home">View All in Hub Grid →</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#about" class="nav-link" id="navAboutLink" data-view-target="home">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Launch Suite CTA, API Key, Theme Toggle, Mobile Hamburger) -->
+      <div class="nav-actions">
+        <!-- Ada-Style Glowing Action Button -->
+        <a href="#features" class="ada-nav-cta-btn" id="navCtaBtn" title="Launch AI Study Suite" style="text-decoration: none;" data-view-target="home">
+          <span>Explore Tools</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- API Key Status Badge -->
+        <button class="api-badge-btn" id="apiKeyBadgeBtn" title="Configure Google Gemini API Key">
+          <span class="status-dot" id="apiStatusDot"></span>
+          <span id="apiStatusText">Key Required</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <span id="themeIcon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link" data-view-target="home">🏠 Home</a></li>
+      <li><a href="#features" class="mobile-nav-link" data-view-target="home">✨ Features (Hub Directory)</a></li>
+      <li><a href="#about" class="mobile-nav-link" data-view-target="home">ℹ️ About StudyAI</a></li>
+      <li class="mobile-nav-divider"></li>
+      <li class="mobile-nav-heading">10 Dedicated Pages</li>
+      <li><a href="pages/resume.html" class="mobile-nav-link">💼 Task 1: AI Resume Builder</a></li>
+      <li><a href="pages/notes.html" class="mobile-nav-link">📘 Task 2: AI Notes Generator</a></li>
+      <li><a href="pages/ppt.html" class="mobile-nav-link">📊 Task 3: AI Presentation (PPT)</a></li>
+      <li><a href="pages/mindmap.html" class="mobile-nav-link">🧠 Task 4: AI Syllabus Mind Map</a></li>
+      <li><a href="pages/sheets.html" class="mobile-nav-link">📈 Task 5: Google Sheets as Backend</a></li>
+      <li><a href="pages/quiz.html" class="mobile-nav-link">📝 Task 6: AI Dynamic Quiz / MCQ</a></li>
+      <li><a href="pages/doubts.html" class="mobile-nav-link">💬 Task 7: AI Subject Tutor Bot</a></li>
+      <li><a href="pages/flashcards.html" class="mobile-nav-link">🗂 Task 8: AI 3D Flashcards</a></li>
+      <li><a href="pages/planner.html" class="mobile-nav-link">📅 Task 9: AI Study Timetable</a></li>
+      <li><a href="pages/ocr.html" class="mobile-nav-link">📸 Task 10: Photo Notes OCR</a></li>
+    </ul>
+  </div>
+
+  <!-- ===================================================================
+       Main Content Views Area
+       =================================================================== -->
+  <main id="mainAppContent">
+
+    <!-- ===============================================================
+         VIEW 0: HOME / ADA-INSPIRED STUDY PLATFORM LANDING
+         =============================================================== -->
+    <section class="view-section active" id="view-home">
+      <!-- Ada Ethereal Hero Wrapper -->
+      <div class="ada-hero-wrapper">
+        <!-- Radial Atmosphere Lighting Glow -->
+        <div class="ada-ambient-glow" aria-hidden="true"></div>
+
+        <div class="ada-hero-container">
+          <!-- Top Pill Badge matching Ada: ✦ New AI-Powered Student Productivity Suite -->
+          <div class="ada-pill-badge" id="adaHeroBadge">
+            <span class="badge-sparkle">✦ New</span>
+            <span class="badge-text">AI-Powered Student Productivity Suite</span>
+          </div>
+
+          <!-- Hero Headline matching Ada typography -->
+          <h1 class="ada-hero-title">
+            <span class="ada-title-gradient">AI Study Powered</span> by StudyAI
+            <span class="ada-title-dark">Master Any Subject</span>
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p class="ada-hero-subtitle">
+            Get personalized academic insights with AI-powered Cornell notes, interactive 3D flashcards, smart exam quizzes, and instant doubt solving.
+          </p>
+
+
+
+          <!-- Hero Centerpiece Stage: Hand holding Smartphone & Floating Glass Cards -->
+          <div class="ada-hero-stage">
+            
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Container for Stats & Tools -->
+      <div class="container ada-post-hero">
+        <!-- Quick Metrics Ribbon -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">📘</div>
+          <div class="stat-info">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Structured Active Notes</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon cyan">⚡</div>
+          <div class="stat-info">
+            <div class="stat-value">3.2x</div>
+            <div class="stat-label">Faster Exam Revision</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">🎯</div>
+          <div class="stat-info">
+            <div class="stat-value">10 Tools</div>
+            <div class="stat-label">All-in-One Student Suite</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber">🔑</div>
+          <div class="stat-info">
+            <div class="stat-value">Gemini</div>
+            <div class="stat-label">AI Ready &amp; Demo Mode</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools Directory Grid -->
+      <div class="section-header" id="features">
+        <div>
+          <h2>Explore All 10 AI Academic Tools</h2>
+          <p>Launch any tool inside the unified hub or open its dedicated full page.</p>
+        </div>
+      </div>
+
+      <div class="tools-grid">
+        <!-- Task 1: AI Resume Builder -->
+        <div class="tool-card" data-view-target="resume">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge popular">Career Prep</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 1</span>
+            </div>
+            <div class="tool-card-icon" style="background: #eef2ff; color: #4f46e5;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3>Task 1: AI Resume Builder</h3>
+            <p>Fill form or choose sample profile to generate ATS-optimized, high-impact resumes with live editing, templates &amp; PDF export.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="resume">Launch in Hub</button>
+            <a href="pages/resume.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 2: Notes Generator -->
+        <div class="tool-card" data-view-target="notes">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge popular">Popular</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 2</span>
+            </div>
+            <div class="tool-card-icon" style="background: var(--primary-light); color: var(--primary);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3>Task 2: AI Notes Generator</h3>
+            <p>Convert academic text or chapter summaries into formatted Cornell notes with formulas, cheat sheets, and Markdown render.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="notes">Launch in Hub</button>
+            <a href="pages/notes.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 3: Presentation PPT -->
+        <div class="tool-card" data-view-target="ppt">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge">Keynotes</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 3</span>
+            </div>
+            <div class="tool-card-icon" style="background: #e0f2fe; color: #0284c7;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h20v14H2z"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </div>
+            <h3>Task 3: AI Presentation (PPT)</h3>
+            <p>Generate presentation slides in JSON with key points, speaker commentary, interactive slide navigator, and real .pptx export.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="ppt">Launch in Hub</button>
+            <a href="pages/ppt.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 4: Mind Map Generator -->
+        <div class="tool-card" data-view-target="mindmap">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge">Visual Map</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 4</span>
+            </div>
+            <div class="tool-card-icon" style="background: #fdf4ff; color: #a21caf;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3>Task 4: AI Syllabus Mind Map</h3>
+            <p>Visualize complex syllabi and textbooks with structured interactive tree maps, branch zooming, and outline hierarchies.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="mindmap">Launch in Hub</button>
+            <a href="pages/mindmap.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 5: Google Sheets as Backend -->
+        <div class="tool-card" data-view-target="sheets">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge popular">Full-Stack</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 5</span>
+            </div>
+            <div class="tool-card-icon" style="background: #ecfdf5; color: #059669;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h3>Task 5: Google Sheets Backend</h3>
+            <p>Connect Google Sheets as a live database via Apps Script API. Add student records, search, filter, and run AI trend insights.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="sheets">Launch in Hub</button>
+            <a href="pages/sheets.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 6: Quiz MCQ Generator -->
+        <div class="tool-card" data-view-target="quiz">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge popular">Dynamic Engine</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 6</span>
+            </div>
+            <div class="tool-card-icon" style="background: var(--success-light); color: var(--success);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>Task 6: AI Dynamic Quiz &amp; MCQ</h3>
+            <p>Dynamic question generator on any topic or notes, instant practice mode feedback, streak counter, timed exam &amp; add more questions.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="quiz">Launch in Hub</button>
+            <a href="pages/quiz.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 7: Subject Doubt Solver -->
+        <div class="tool-card" data-view-target="doubts">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge">24/7 Tutor</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 7</span>
+            </div>
+            <div class="tool-card-icon" style="background: #ecfeff; color: #0891b2;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Task 7: Subject Doubt Solver Bot</h3>
+            <p>Get step-by-step solutions for Physics, Math, Chemistry, CS, and Biology with analogies and speech read-out.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="doubts">Launch in Hub</button>
+            <a href="pages/doubts.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 8: Flashcard Generator -->
+        <div class="tool-card" data-view-target="flashcards">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge popular">Active Recall</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 8</span>
+            </div>
+            <div class="tool-card-icon" style="background: #fffbeb; color: #d97706;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3>Task 8: AI 3D Flashcards</h3>
+            <p>Master terms and formulas with 3D flip flashcards, mastery tracking, shuffle mode, and spaced repetition filters.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="flashcards">Launch in Hub</button>
+            <a href="pages/flashcards.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 9: Study Planner -->
+        <div class="tool-card" data-view-target="planner">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge">Productivity</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 9</span>
+            </div>
+            <div class="tool-card-icon" style="background: #f5f3ff; color: #7c3aed;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>Task 9: AI Study Timetable</h3>
+            <p>Generate a tailored weekly schedule, Pomodoro time blocks, weak-subject focus, and check off milestone study tasks.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="planner">Launch in Hub</button>
+            <a href="pages/planner.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+
+        <!-- Task 10: Photo Notes Summarizer -->
+        <div class="tool-card" data-view-target="ocr">
+          <div>
+            <div class="tool-card-top">
+              <span class="tool-badge">Vision OCR</span>
+              <span class="text-muted" style="font-size: 0.8rem;">Task 10</span>
+            </div>
+            <div class="tool-card-icon" style="background: #fef2f2; color: #dc2626;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <h3>Task 10: Notes Summarizer from Photos</h3>
+            <p>Upload photos of handwritten pages or textbook sheets. Optical Character Recognition extracts and summarizes them instantly.</p>
+          </div>
+          <div class="tool-card-footer" style="display: flex; gap: 0.5rem; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn btn-primary btn-xs" data-view-target="ocr">Launch in Hub</button>
+            <a href="pages/ocr.html" class="btn btn-outline btn-xs" style="text-decoration: none;" onclick="event.stopPropagation();">Dedicated Page ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Subject Knowledge Quick Hub -->
+      <div class="ada-subject-hub-banner">
+        <div class="ada-hub-header">
+          <div>
+            <span class="tool-badge popular" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">Instant Study Presets</span>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.35rem;">Jump Directly Into Your Subject</h3>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Select a high-yield topic to auto-fill Cornell Notes &amp; Flashcards</p>
+        </div>
+        <div class="ada-hub-pills">
+          <button class="ada-hub-pill" data-view-target="notes">🧬 Biology: ATP Synthesis</button>
+          <button class="ada-hub-pill" data-view-target="doubts">⚡ Physics: Rocket Propulsion</button>
+          <button class="ada-hub-pill" data-view-target="quiz">🧪 Chemistry: Reaction Mechanisms</button>
+          <button class="ada-hub-pill" data-view-target="flashcards">📐 Calculus: Integral Theorems</button>
+          <button class="ada-hub-pill" data-view-target="notes">💻 Computer Science: Neural Nets</button>
+          <button class="ada-hub-pill" data-view-target="mindmap">🏛️ History: WW2 Strategy Map</button>
+        </div>
+      </div>
+
+      <!-- Student Praise / Proof Banner -->
+      <div class="ada-proof-ribbon">
+        <div class="ada-proof-item">
+          <span class="ada-proof-star">★★★★★</span>
+          <span class="ada-proof-text"><strong>4.9/5 Rating</strong> by 12,000+ Students</span>
+        </div>
+        <div class="ada-proof-divider"></div>
+        <div class="ada-proof-item">
+          <span class="ada-proof-icon">⚡</span>
+          <span class="ada-proof-text"><strong>Real-time AI Synthesis</strong> via Google Gemini</span>
+        </div>
+        <div class="ada-proof-divider"></div>
+        <div class="ada-proof-item">
+          <span class="ada-proof-icon">🔒</span>
+          <span class="ada-proof-text"><strong>100% Private</strong> in Local Browser Storage</span>
+        </div>
+      </div>
+
+      <!-- ===============================================================
+           ABOUT SECTION (Linked from Navbar)
+           =============================================================== -->
+      <section class="about-section" id="about">
+        <div class="about-header-wrap">
+          <span class="about-pill">✦ Academic Intelligence Architecture</span>
+          <h2 class="about-title">About StudyAI Student Productivity Suite</h2>
+          <p class="about-subtitle">
+            StudyAI is an all-in-one educational platform engineered for modern students. Combining active recall, spaced repetition, optical recognition, and cutting-edge generative AI to accelerate learning across all 10 core academic tasks.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Card 1 -->
+          <div class="about-card">
+            <div class="about-card-icon" style="background: #eef2ff; color: #4f46e5;">🎓</div>
+            <h3>10 Specialized Academic Tools</h3>
+            <p>
+              From ATS-optimized resume creation and Cornell note-taking to PPT slide decks, visual syllabus mind mapping, Google Sheets live databases, 3D flashcards, and timetable generation — every tool is crafted to eliminate academic friction.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="about-card">
+            <div class="about-card-icon" style="background: var(--success-light); color: var(--success);">⚡</div>
+            <h3>Dynamic Engines &amp; Instant Feedback</h3>
+            <p>
+              Features dynamic question synthesis tailored to custom topics or pasted textbook paragraphs. Experience instant answer verification, streak tracking, question pool expansion, and speech read-out explanations.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="about-card">
+            <div class="about-card-icon" style="background: #ecfeff; color: #0891b2;">🔒</div>
+            <h3>Privacy &amp; Browser-First Security</h3>
+            <p>
+              Your study notes, question history, and Google Gemini API keys remain 100% private in your browser's local storage. Features ask for API authorization on-demand and export directly to PDF, PPTX, or Markdown without external server hops.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tech Stack Ribbon -->
+        <div class="about-tech-stack-ribbon">
+          <div>
+            <div style="font-weight: 800; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.25rem;">Built With Modern Web Technologies</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">Client-side execution with zero backend server dependencies</div>
+          </div>
+          <div class="about-tech-tags">
+            <span class="about-tech-tag">✨ Google Gemini AI</span>
+            <span class="about-tech-tag">📄 jsPDF</span>
+            <span class="about-tech-tag">📝 Marked.js</span>
+            <span class="about-tech-tag">📊 PptxGenJS</span>
+            <span class="about-tech-tag">📸 Tesseract.js OCR</span>
+            <span class="about-tech-tag">📈 Google Apps Script</span>
+          </div>
+        </div>
+      </section>
+
+    </div> <!-- Closes .container.ada-post-hero -->
+  </section>
+
+    <!-- ===============================================================
+         VIEW 1: AI NOTES GENERATOR
+         =============================================================== -->
+    <section class="view-section" id="view-notes">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>📘</span> AI Notes Generator</h2>
+            <p>Create detailed, syllabus-aligned study notes with formulas and takeaways.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="notes">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Notes AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-notes">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-notes" class="feature-api-input" placeholder="Custom key for Notes Generator..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-notes" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="notes">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="notes">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="notes" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <form id="notesForm">
+            <div class="form-group">
+              <label class="form-label" for="notesTopicInput">Topic or Chapter Name <span class="required">*</span></label>
+              <input type="text" id="notesTopicInput" class="form-control" placeholder="e.g. Photosynthesis & Cellular Respiration" required>
+              
+              <div class="chips-container">
+                <span class="chip notes-chip" data-topic="Photosynthesis &amp; Light Reactions">🌱 Photosynthesis</span>
+                <span class="chip notes-chip" data-topic="Newton's Laws of Motion &amp; Friction">🚀 Newton's Laws</span>
+                <span class="chip notes-chip" data-topic="Machine Learning &amp; Gradient Descent">🤖 Machine Learning</span>
+                <span class="chip notes-chip" data-topic="Cold War Geopolitics (1945-1991)">🌍 Cold War</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notesLevelSelect">Target Academic Level</label>
+              <select id="notesLevelSelect" class="form-control form-select">
+                <option value="High School">High School (Grade 9-12)</option>
+                <option value="Undergraduate / College" selected>College / University</option>
+                <option value="Advanced / Competitive Exam">Competitive Exam / Advanced</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notesStyleSelect">Notes Format</label>
+              <select id="notesStyleSelect" class="form-control form-select">
+                <option value="Cornell Method" selected>Cornell Method (Questions + Notes + Summary)</option>
+                <option value="Executive Exam Cram Sheet">High-Yield Exam Cram Sheet</option>
+                <option value="Comprehensive Textbook Breakdown">Comprehensive Textbook Breakdown</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generateNotesBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg>
+              Generate Study Notes
+            </button>
+          </form>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="notesLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Synthesizing Notes with AI...</div>
+            <div class="loading-subtext">Structuring key definitions, formulas, and high-yield exam takeaways.</div>
+          </div>
+
+          <div id="notesOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <h4>No notes generated yet</h4>
+              <p>Type a topic or pick one of the sample chips on the left, then click <strong>Generate Study Notes</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 2: AI PRESENTATION (PPT) GENERATOR
+         =============================================================== -->
+    <section class="view-section" id="view-ppt">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>📊</span> AI Presentation Deck</h2>
+            <p>Generate presentation slides with speaker notes and key talking points.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="ppt">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>PPT Slides AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-ppt">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-ppt" class="feature-api-input" placeholder="Custom key for Presentation Slides..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-ppt" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="ppt">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="ppt">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="ppt" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <form id="pptForm">
+            <div class="form-group">
+              <label class="form-label" for="pptTopicInput">Presentation Topic <span class="required">*</span></label>
+              <input type="text" id="pptTopicInput" class="form-control" placeholder="e.g. Renewable Energy & Solar Tech" required>
+              
+              <div class="chips-container">
+                <span class="chip ppt-chip" data-topic="Renewable Energy &amp; Solar Tech">☀️ Solar Energy</span>
+                <span class="chip ppt-chip" data-topic="Evolution of Artificial Intelligence">🧠 History of AI</span>
+                <span class="chip ppt-chip" data-topic="Space Exploration &amp; Mars Colonization">🚀 Mars Missions</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pptCountSelect">Number of Slides</label>
+              <select id="pptCountSelect" class="form-control form-select">
+                <option value="4">4 Slides (Quick Pitch)</option>
+                <option value="5" selected>5 Slides (Standard Class Talk)</option>
+                <option value="7">7 Slides (In-Depth Seminar)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pptAudienceSelect">Audience Level</label>
+              <select id="pptAudienceSelect" class="form-control form-select">
+                <option value="College Seminar" selected>College Seminar &amp; Peers</option>
+                <option value="High School Class">High School Class</option>
+                <option value="General Public">General Public</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generatePptBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 3h20v14H2z"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              Generate Slide Deck
+            </button>
+          </form>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="pptLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Drafting Presentation Slides...</div>
+            <div class="loading-subtext">Writing concise bullets, slide hierarchy, and presenter notes.</div>
+          </div>
+
+          <div id="pptOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h20v14H2z"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              <h4>No slide deck generated yet</h4>
+              <p>Enter a presentation topic and click <strong>Generate Slide Deck</strong> to preview the deck.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 3: AI MIND MAP GENERATOR FOR SYLLABUS
+         =============================================================== -->
+    <section class="view-section" id="view-mindmap">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>🧠</span> AI Syllabus Mind Map</h2>
+            <p>Generate an interactive visual hierarchy of any subject syllabus or course.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="mindmap">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Mind Map AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-mindmap">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-mindmap" class="feature-api-input" placeholder="Custom key for Mind Map..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-mindmap" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="mindmap">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="mindmap">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="mindmap" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <form id="mindmapForm">
+            <div class="form-group">
+              <label class="form-label" for="mindmapTopicInput">Subject / Course Syllabus <span class="required">*</span></label>
+              <input type="text" id="mindmapTopicInput" class="form-control" placeholder="e.g. Data Structures & Algorithms" required>
+              
+              <div class="chips-container">
+                <span class="chip mindmap-chip" data-topic="Data Structures &amp; Algorithms">💻 DSA Course</span>
+                <span class="chip mindmap-chip" data-topic="Electromagnetism &amp; Circuits">⚡ Electromagnetism</span>
+                <span class="chip mindmap-chip" data-topic="Organic Chemistry Reactions">🧪 Organic Chemistry</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mindmapDepthSelect">Map Depth</label>
+              <select id="mindmapDepthSelect" class="form-control form-select">
+                <option value="3" selected>Standard (3 Tiers: Core → Modules → Concepts)</option>
+                <option value="4">Deep (4 Tiers: Include Micro-Definitions)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generateMindmapBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Build Syllabus Mind Map
+            </button>
+          </form>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="mindmapLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Constructing Mind Map Tree...</div>
+            <div class="loading-subtext">Mapping modules, parent nodes, and subtopics into structured branches.</div>
+          </div>
+
+          <div id="mindmapOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              <h4>No mind map generated yet</h4>
+              <p>Type your course or syllabus name to build a visual knowledge graph.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 4: AI QUIZ / MCQ GENERATOR
+         =============================================================== -->
+    <section class="view-section" id="view-quiz">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>📝</span> AI Quiz &amp; MCQ Generator</h2>
+            <p>Generate timed multiple choice tests with instant answers and explanations.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="quiz">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Quiz &amp; MCQ AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-quiz">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-quiz" class="feature-api-input" placeholder="Custom key for Quiz Generator..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-quiz" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="quiz">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="quiz">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="quiz" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <form id="quizForm">
+            <div class="form-group">
+              <label class="form-label" for="quizTopicInput">Quiz Topic <span class="required">*</span></label>
+              <input type="text" id="quizTopicInput" class="form-control" placeholder="e.g. World War II Pivotal Events" required>
+              
+              <div class="chips-container">
+                <span class="chip quiz-chip" data-topic="World War II Pivotal Events">🌍 World War II</span>
+                <span class="chip quiz-chip" data-topic="Human Circulatory System">❤️ Circulatory System</span>
+                <span class="chip quiz-chip" data-topic="Calculus: Derivatives &amp; Integrals">📐 Calculus</span>
+                <span class="chip quiz-chip" data-topic="Python Programming OOP">🐍 Python OOP</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="quizCountSelect">Question Count</label>
+              <select id="quizCountSelect" class="form-control form-select">
+                <option value="3">3 Questions (Quick Check)</option>
+                <option value="5" selected>5 Questions (Standard)</option>
+                <option value="8">8 Questions (Exam Drill)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="quizDiffSelect">Difficulty Level</label>
+              <select id="quizDiffSelect" class="form-control form-select">
+                <option value="Beginner">Beginner (Concept Identification)</option>
+                <option value="Intermediate" selected>Intermediate (Standard Exam Level)</option>
+                <option value="Advanced / Tricky">Advanced (Competitive &amp; Tricky)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generateQuizBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>
+              Create Interactive Quiz
+            </button>
+          </form>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="quizLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Drafting Exam Questions...</div>
+            <div class="loading-subtext">Generating plausible distractors, answer keys, and deep explanations.</div>
+          </div>
+
+          <div id="quizOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <h4>No active quiz</h4>
+              <p>Configure topic and question count on the left, then click <strong>Create Interactive Quiz</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 5: AI SUBJECT DOUBT-SOLVING CHATBOT
+         =============================================================== -->
+    <section class="view-section" id="view-doubts">
+      <div class="chatbot-wrapper">
+        <!-- Top Chat Header -->
+        <div class="chatbot-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div class="chat-avatar ai" style="width: 32px; height: 32px;">AI</div>
+            <div>
+              <div style="font-weight: 800; font-size: 1.05rem;">Subject Doubt Solver</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Step-by-step breakdown &amp; intuitive explanations</div>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="clearChatBtn">Clear History</button>
+        </div>
+
+        <!-- Chatbot Dedicated Feature API Key Bar -->
+        <div class="chatbot-api-bar" data-feature="doubts">
+          <div class="chatbot-api-bar-left">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--primary);"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+            <span style="font-size: 0.85rem; font-weight: 700;">Doubt Solver AI Key:</span>
+            <span class="feature-api-badge demo" id="featureBadge-doubts">
+              <span class="feature-api-badge-dot"></span>
+              <span class="badge-text">Demo Mode</span>
+            </span>
+          </div>
+          <div class="chatbot-api-bar-right">
+            <div class="feature-api-input-wrap">
+              <input type="password" id="featureKeyInput-doubts" class="feature-api-input" placeholder="Custom key for Doubt Solver..." autocomplete="off">
+              <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-doubts" title="Show/Hide Key">👁</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="doubts">Save</button>
+            <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="doubts">Test</button>
+            <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="doubts" title="Remove custom key">Clear</button>
+          </div>
+        </div>
+
+        <!-- Subject Selector Strip -->
+        <div class="subject-selector-strip">
+          <button class="subject-pill active" data-subject="Physics">⚡ Physics</button>
+          <button class="subject-pill" data-subject="Mathematics">📐 Mathematics</button>
+          <button class="subject-pill" data-subject="Chemistry">🧪 Chemistry</button>
+          <button class="subject-pill" data-subject="Biology">🧬 Biology</button>
+          <button class="subject-pill" data-subject="Computer Science">💻 Computer Science</button>
+          <button class="subject-pill" data-subject="History &amp; Lit">📜 History &amp; Literature</button>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div class="chat-messages-area" id="chatMessagesArea">
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+        <!-- Quick Prompts Chips -->
+        <div style="padding: 0.5rem 1.25rem; background: var(--bg-secondary); border-top: 1px solid var(--border-color); display: flex; gap: 0.5rem; overflow-x: auto;">
+          <span class="chip doubt-prompt-chip" data-prompt="Why is the sky blue during the day and red at sunset?">🌅 Why is sky blue?</span>
+          <span class="chip doubt-prompt-chip" data-prompt="Derive the quadratic formula step by step.">📐 Derive quadratic formula</span>
+          <span class="chip doubt-prompt-chip" data-prompt="Explain Bayes' Theorem with an intuitive real-world example.">📊 Explain Bayes' Theorem</span>
+          <span class="chip doubt-prompt-chip" data-prompt="How does CRISPR gene editing work?">🧬 How does CRISPR work?</span>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="chat-input-bar">
+          <input type="text" id="chatInputField" class="chat-input-field" placeholder="Ask your doubt, equation, or homework problem..." autocomplete="off">
+          <button class="btn btn-primary" id="chatSendBtn" style="border-radius: var(--radius-full); padding: 0 1.25rem;">
+            <span>Send</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 6: AI FLASHCARD GENERATOR FOR REVISION
+         =============================================================== -->
+    <section class="view-section" id="view-flashcards">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>🗂</span> AI Flashcard Revision</h2>
+            <p>Generate 3D interactive flip cards with active recall tracking.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="flashcards">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Flashcards AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-flashcards">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-flashcards" class="feature-api-input" placeholder="Custom key for Flashcards..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-flashcards" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="flashcards">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="flashcards">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="flashcards" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <form id="flashcardsForm">
+            <div class="form-group">
+              <label class="form-label" for="flashcardsTopicInput">Topic / Vocabulary / Subject <span class="required">*</span></label>
+              <input type="text" id="flashcardsTopicInput" class="form-control" placeholder="e.g. Organic Chemistry Functional Groups" required>
+              
+              <div class="chips-container">
+                <span class="chip flashcard-chip" data-topic="Organic Chemistry Functional Groups">🧪 Functional Groups</span>
+                <span class="chip flashcard-chip" data-topic="Essential Spanish Medical Vocabulary">🇪🇸 Spanish Terms</span>
+                <span class="chip flashcard-chip" data-topic="Key Neuroscience Brain Regions">🧠 Neuroscience</span>
+                <span class="chip flashcard-chip" data-topic="Microeconomics Supply &amp; Demand Rules">📈 Microeconomics</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="flashcardsCountSelect">Deck Size</label>
+              <select id="flashcardsCountSelect" class="form-control form-select">
+                <option value="5">5 Cards (Quick Refresh)</option>
+                <option value="6" selected>6 Cards (Standard Set)</option>
+                <option value="10">10 Cards (Comprehensive Deck)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generateFlashcardsBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              Create Flashcard Deck
+            </button>
+          </form>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="flashcardsLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Generating Active Recall Cards...</div>
+            <div class="loading-subtext">Optimizing question clarity and spaced repetition memory cues.</div>
+          </div>
+
+          <div id="flashcardsOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <h4>No flashcards in deck</h4>
+              <p>Enter a study topic to generate 3D interactive flashcards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 7: AI STUDY PLANNER / TIMETABLE GENERATOR
+         =============================================================== -->
+    <section class="view-section" id="view-planner">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>📅</span> AI Study Planner &amp; Schedule</h2>
+            <p>Generate a structured timetable with Pomodoro slots and checklists.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="planner">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Timetable Planner AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-planner">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-planner" class="feature-api-input" placeholder="Custom key for Timetable Planner..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-planner" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="planner">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="planner">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="planner" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <form id="plannerForm">
+            <div class="form-group">
+              <label class="form-label" for="plannerExamInput">Exam / Target Goal <span class="required">*</span></label>
+              <input type="text" id="plannerExamInput" class="form-control" placeholder="e.g. Finals Week Sprint (Physics &amp; Math)" required>
+              
+              <div class="chips-container">
+                <span class="chip planner-chip" data-exam="Finals Week Sprint">🏁 Finals Week Sprint</span>
+                <span class="chip planner-chip" data-exam="MCAT / Medical Entrance">🩺 Medical Entrance</span>
+                <span class="chip planner-chip" data-exam="SAT / College Board Exam">🎓 SAT Master Plan</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="plannerHoursInput">Daily Study Hours</label>
+              <input type="number" id="plannerHoursInput" class="form-control" value="4" min="1" max="14">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="plannerDaysInput">Days Until Exam</label>
+              <input type="number" id="plannerDaysInput" class="form-control" value="14" min="1" max="180">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="plannerWeakInput">Weak Subjects or Areas to Prioritize</label>
+              <input type="text" id="plannerWeakInput" class="form-control" placeholder="e.g. Organic reactions, Calculus proofs">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generatePlannerBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Generate Optimized Schedule
+            </button>
+          </form>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="plannerLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Balancing Study Schedule...</div>
+            <div class="loading-subtext">Calculating spaced repetition intervals, break cycles, and milestones.</div>
+          </div>
+
+          <div id="plannerOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <h4>No timetable generated yet</h4>
+              <p>Fill in your exam details on the left to produce a personalized weekly timetable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 8: AI NOTES SUMMARIZER FROM PHOTOS (OCR + AI)
+         =============================================================== -->
+    <section class="view-section" id="view-ocr">
+      <div class="tool-view-layout">
+        <!-- Sidebar Controls -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <h2><span>📸</span> Photo Notes Summarizer</h2>
+            <p>Extract handwriting or textbook photos and synthesize clean summaries.</p>
+          </div>
+
+          <!-- Feature-Specific API Key Box -->
+          <div class="feature-api-box" data-feature="ocr">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Photo OCR AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-ocr">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Demo Mode</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-ocr" class="feature-api-input" placeholder="Custom key for Photo OCR..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-ocr" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="ocr">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="ocr">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="ocr" title="Remove custom key">Clear</button>
+              </div>
+              <div class="feature-api-helper">Works independently. Empty = runs in realistic Demo Mode.</div>
+            </div>
+          </div>
+
+          <div class="upload-dropzone" id="ocrDropzone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem;">Upload Note Photo</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Drag and drop or click to browse</div>
+            <input type="file" id="ocrFileInput" accept="image/*" style="display: none;">
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <div class="form-label">Or test with high-yield sample notes:</div>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+              <button class="btn btn-secondary btn-sm" id="loadSampleBioBtn" style="justify-content: flex-start;">
+                🌱 Sample Biology Cell Respiration Notes
+              </button>
+              <button class="btn btn-secondary btn-sm" id="loadSamplePhysicsBtn" style="justify-content: flex-start;">
+                ⚡ Sample Physics Kinematics Notes
+              </button>
+            </div>
+          </div>
+
+          <!-- Image Preview -->
+          <img id="ocrPreviewImg" class="ocr-preview-image" style="display: none;" alt="Selected Note Photo">
+
+          <button class="btn btn-primary btn-block" id="runOcrSummarizeBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            Summarize Photo Notes
+          </button>
+        </div>
+
+        <!-- Main Output Panel -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="ocrLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Performing Optical Recognition &amp; AI Synthesis...</div>
+            <div class="loading-subtext">Extracting lines, formulas, and creating high-yield takeaways.</div>
+          </div>
+
+          <div id="ocrOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <h4>No photo notes analyzed yet</h4>
+              <p>Upload a picture of your notes or choose one of the sample buttons on the left to extract and summarize.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 9: TASK 1 - AI RESUME BUILDER
+         =============================================================== -->
+    <section class="view-section" id="view-resume">
+      <div class="tool-view-layout">
+        <!-- Left Sidebar: Controls & Form -->
+        <div class="tool-sidebar-panel">
+          <div class="tool-header-block">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.35rem;">
+              <h2><span>💼</span> Task 1: AI Resume Builder</h2>
+              <a href="pages/resume.html" class="btn btn-outline btn-xs" style="text-decoration:none;">Open Full Page ↗</a>
+            </div>
+            <p>Fill in your profile details or choose a sample profile. AI synthesizes an ATS-optimized, high-impact resume ready to export as PDF.</p>
+          </div>
+
+          <!-- Feature API Key Status Box -->
+          <div class="feature-api-box" data-feature="resume">
+            <div class="feature-api-header">
+              <div class="feature-api-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                <span>Resume AI Key</span>
+              </div>
+              <span class="feature-api-badge demo" id="featureBadge-resume">
+                <span class="feature-api-badge-dot"></span>
+                <span class="badge-text">Key Required</span>
+              </span>
+            </div>
+            <div class="feature-api-body">
+              <div class="feature-api-input-wrap">
+                <input type="password" id="featureKeyInput-resume" class="feature-api-input" placeholder="Gemini API Key..." autocomplete="off">
+                <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-resume" title="Show/Hide Key">👁</button>
+              </div>
+              <div class="feature-api-actions">
+                <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="resume">Save Key</button>
+                <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="resume">Test</button>
+                <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="resume">Clear</button>
+              </div>
+              <div class="feature-api-helper">API key required to generate resumes with Gemini.</div>
+            </div>
+          </div>
+
+          <!-- Sample Profiles Quick-Fill -->
+          <div style="margin-bottom: 1.25rem;">
+            <label class="form-label">⚡ Test with Sample Profiles (1-Click Fill):</label>
+            <div class="resume-presets-bar">
+              <button type="button" class="chip sample-profile-btn" data-profile="cs">💻 CS &amp; Tech Fresher</button>
+              <button type="button" class="chip sample-profile-btn" data-profile="marketing">📊 Growth &amp; Marketing</button>
+              <button type="button" class="chip sample-profile-btn" data-profile="premed">🧬 BioTech &amp; Pre-Med</button>
+            </div>
+          </div>
+
+          <!-- Template Style Selector -->
+          <div style="margin-bottom: 1.25rem;">
+            <label class="form-label">Select Visual Template:</label>
+            <div class="resume-template-selector">
+              <button type="button" class="template-btn active" data-template="modern">Modern Tech</button>
+              <button type="button" class="template-btn" data-template="classic">Executive Serif</button>
+              <button type="button" class="template-btn" data-template="minimal">Minimal Clean</button>
+            </div>
+          </div>
+
+          <!-- Resume Form -->
+          <form id="resumeForm">
+            <div class="form-group">
+              <label class="form-label" for="resumeFullName">Full Name <span class="required">*</span></label>
+              <input type="text" id="resumeFullName" class="form-control" placeholder="e.g. Alex Rivera" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="resumeTargetRole">Target Role / Job Title <span class="required">*</span></label>
+              <input type="text" id="resumeTargetRole" class="form-control" placeholder="e.g. Full-Stack Software Engineer Intern" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+              <div class="form-group">
+                <label class="form-label" for="resumeEmail">Email</label>
+                <input type="email" id="resumeEmail" class="form-control" placeholder="alex@univ.edu">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="resumePhone">Phone</label>
+                <input type="text" id="resumePhone" class="form-control" placeholder="+1 (555) 0192">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+              <div class="form-group">
+                <label class="form-label" for="resumeLocation">Location</label>
+                <input type="text" id="resumeLocation" class="form-control" placeholder="City, State / Country">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="resumeLinks">LinkedIn / GitHub</label>
+                <input type="text" id="resumeLinks" class="form-control" placeholder="linkedin.com/in/alex">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="resumeObjective">Professional Objective / Summary</label>
+              <textarea id="resumeObjective" class="form-control" rows="2" placeholder="Brief career goal or focus area..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="resumeEducation">Education (Degree, University, GPA)</label>
+              <input type="text" id="resumeEducation" class="form-control" placeholder="e.g. B.S. in Computer Science — State Univ, 2024 (GPA: 3.85)">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="resumeSkills">Skills &amp; Technologies (comma separated)</label>
+              <textarea id="resumeSkills" class="form-control" rows="2" placeholder="e.g. JavaScript, React, Python, PostgreSQL, Git, Docker, Problem Solving"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="resumeExperience">Work Experience &amp; Projects</label>
+              <textarea id="resumeExperience" class="form-control" rows="4" placeholder="Paste bullet points or raw notes on internships, hackathons, or projects..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="resumeCerts">Certifications &amp; Honors (Optional)</label>
+              <input type="text" id="resumeCerts" class="form-control" placeholder="e.g. AWS Certified Practitioner, Dean's List">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="generateResumeBtn" style="padding: 0.9rem;">
+              <span>✨</span> Generate Polished Resume
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Main Panel: Live Editable Sheet Preview -->
+        <div class="tool-main-panel">
+          <div class="loading-indicator" id="resumeLoading">
+            <div class="spinner"></div>
+            <div class="loading-status-text">Synthesizing ATS-Optimized Resume...</div>
+            <div class="loading-subtext">Writing quantified action-verb bullet points and formatting layout.</div>
+          </div>
+
+          <div id="resumeOutputArea">
+            <div class="empty-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="48" height="48"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <h4>No resume generated yet</h4>
+              <p>Pick one of the sample profile chips on the left (e.g. <strong>CS &amp; Tech Fresher</strong>) and click <strong>Generate Polished Resume</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         VIEW 10: TASK 5 - GOOGLE SHEETS AS BACKEND WITH DYNAMIC FRONTEND
+         =============================================================== -->
+    <section class="view-section" id="view-sheets">
+      <div id="sheetsBackendApp">
+        <!-- Top Info Ribbon -->
+        <div class="sheets-top-banner">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.5rem;">📊</span>
+                <h2 style="font-size: 1.3rem; font-weight: 800; margin: 0;">Task 5: Google Sheets Live Database &amp; AI Analyst</h2>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.35rem;">
+                Connect Google Sheets as a live database via Apps Script API. Add student records in real time and analyze trends with AI.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span class="sheets-status-indicator live">● Live Database Active</span>
+              <a href="pages/sheets.html" class="btn btn-outline btn-xs" style="text-decoration:none;">Open Full Page ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layout Grid: Form (left) + Database Table & AI (right) -->
+        <div class="resume-layout-grid" style="grid-template-columns: 360px 1fr;">
+          <!-- Left Column: Controls & Add Record Form -->
+          <div>
+            <!-- Feature API Key Box -->
+            <div class="feature-api-box" data-feature="sheets" style="margin-bottom: 1.25rem;">
+              <div class="feature-api-header">
+                <div class="feature-api-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+                  <span>Sheets AI Analyst Key</span>
+                </div>
+                <span class="feature-api-badge demo" id="featureBadge-sheets">
+                  <span class="feature-api-badge-dot"></span>
+                  <span class="badge-text">Key Required</span>
+                </span>
+              </div>
+              <div class="feature-api-body">
+                <div class="feature-api-input-wrap">
+                  <input type="password" id="featureKeyInput-sheets" class="feature-api-input" placeholder="Gemini API Key..." autocomplete="off">
+                  <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-sheets" title="Show/Hide Key">👁</button>
+                </div>
+                <div class="feature-api-actions">
+                  <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="sheets">Save Key</button>
+                  <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="sheets">Test</button>
+                  <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="sheets">Clear</button>
+                </div>
+                <div class="feature-api-helper">API key required to run AI Data Analyst insights.</div>
+              </div>
+            </div>
+
+            <!-- Google Apps Script URL Config -->
+            <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">🔗 Google Apps Script Web App</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Optional: Paste your deployed Apps Script Web App URL to sync with a real Google Sheet.
+              </p>
+              <div class="form-group" style="margin-bottom: 0.5rem;">
+                <input type="url" id="sheetsScriptUrlInput" class="form-control" placeholder="https://script.google.com/macros/s/.../exec">
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button type="button" class="btn btn-secondary btn-sm" id="sheetsSyncBtn" style="flex: 1;">Sync Sheet</button>
+                <button type="button" class="btn btn-outline btn-sm" id="copyAppsScriptCodeBtn" title="View &amp; Copy Apps Script Code">📋 Code</button>
+              </div>
+            </div>
+
+            <!-- Add New Record Form (POST Request) -->
+            <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem;">➕ Add New Student Record (POST)</h4>
+              <form id="sheetsAddRowForm">
+                <div class="form-group">
+                  <label class="form-label" for="newRowName">Student Name <span class="required">*</span></label>
+                  <input type="text" id="newRowName" class="form-control" placeholder="e.g. Jordan Lee" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="newRowSubject">Subject <span class="required">*</span></label>
+                  <input type="text" id="newRowSubject" class="form-control" placeholder="e.g. Organic Chemistry" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                  <div class="form-group">
+                    <label class="form-label" for="newRowMidterm">Midterm (%)</label>
+                    <input type="number" id="newRowMidterm" class="form-control" min="0" max="100" value="85" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="newRowFinal">Final (%)</label>
+                    <input type="number" id="newRowFinal" class="form-control" min="0" max="100" value="88" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="newRowAttendance">Attendance (%)</label>
+                  <input type="number" id="newRowAttendance" class="form-control" min="0" max="100" value="95" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="padding: 0.8rem;">
+                  <span>📤</span> Submit Record to Sheet
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right Column: Database Table & AI Data Analyst -->
+          <div>
+            <!-- Toolbar -->
+            <div class="sheets-toolbar">
+              <div class="sheets-search-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="sheetsSearchInput" placeholder="Search student name, subject, or status...">
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span class="sheets-row-count" id="sheetsRowCount">7 records</span>
+                <button type="button" class="btn btn-primary btn-sm" id="sheetsAiAnalyzeBtn" title="Analyze sheet data with AI">
+                  <span>🧠</span> AI Analyze Trends
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Table -->
+            <div class="sheets-table-wrap">
+              <table class="sheets-table">
+                <thead>
+                  <tr>
+                    <th class="sheets-sortable-th" data-col="id">ID ↕</th>
+                    <th class="sheets-sortable-th" data-col="name">Student Name ↕</th>
+                    <th class="sheets-sortable-th" data-col="subject">Subject ↕</th>
+                    <th class="sheets-sortable-th" data-col="midterm">Midterm ↕</th>
+                    <th class="sheets-sortable-th" data-col="final">Final Exam ↕</th>
+                    <th class="sheets-sortable-th" data-col="attendance">Attendance ↕</th>
+                    <th class="sheets-sortable-th" data-col="status">Status ↕</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="sheetsTableBody">
+                  <!-- Populated dynamically by script.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- AI Analyst Insights Output Area -->
+            <div id="sheetsAiInsights"></div>
+
+            <!-- Apps Script Code Tutorial Box -->
+            <div class="sheets-code-box" style="margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span style="font-weight: 700; color: #38bdf8;">📜 Google Apps Script Deployment Code (doGet &amp; doPost)</span>
+                <span style="font-size: 0.75rem; color: #94a3b8;">Click "Copy Code" on the left to copy</span>
+              </div>
+              <pre><code>// 1. Create a Google Sheet with columns: ID, Name, Subject, Midterm, Final, Attendance, Status
+// 2. Open Extensions &gt; Apps Script and paste:
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = sheet.getDataRange().getValues();
+  var headers = data[0];
+  var rows = data.slice(1).map(function(row) {
+    var obj = {};
+    headers.forEach(function(h, i) { obj[h] = row[i]; });
+    return obj;
+  });
+  return ContentService.createTextOutput(JSON.stringify(rows)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var body = JSON.parse(e.postData.contents);
+  sheet.appendRow(Object.values(body));
+  return ContentService.createTextOutput(JSON.stringify({ status: "success", received: body })).setMimeType(ContentService.MimeType.JSON);
+}
+// 3. Click Deploy &gt; New Deployment &gt; Type: Web App &gt; Who has access: Anyone</code></pre>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       API Key Configuration Modal (Independent Multi-Key Manager)
+       =================================================================== -->
+  <div class="modal-overlay" id="apiKeyModal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 1.35rem;">🔑</span>
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; line-height: 1.2;">AI Feature API Keys Manager</h3>
+            <span style="font-size: 0.78rem; color: var(--text-muted);" id="modalActiveKeyCount">Every AI feature works independently</span>
+          </div>
+        </div>
+        <button class="icon-btn" id="closeApiKeyModalBtn" style="width: 32px; height: 32px;" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body scrollable">
+        <!-- Quick Batch Tool -->
+        <div class="multi-key-batch-box">
+          <div class="multi-key-batch-header">
+            <span class="multi-key-batch-title">
+              <span>⚡</span> Quick Setup: Apply Single Key to All Features
+            </span>
+            <span class="feature-api-badge demo">Optional Shortcut</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            If you have one Google Gemini API key and want to apply it across all 8 tools at once, enter it below. You can still customize any feature individually anytime.
+          </p>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <div class="feature-api-input-wrap" style="flex: 1; min-width: 240px;">
+              <input type="password" id="batchApiKeyInput" class="feature-api-input" placeholder="Paste Gemini API key (AIzaSy...)" autocomplete="off">
+              <button type="button" class="btn-eye-toggle" data-target="batchApiKeyInput" title="Show/Hide Key">👁</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" id="batchApplyKeyBtn">
+              Apply to All 8 Features
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+          <h4 style="font-size: 0.92rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">
+            Independent Feature API Keys
+          </h4>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Each feature uses its own key</span>
+        </div>
+
+        <!-- 8 Features List in Modal -->
+        <div class="features-keys-list" id="modalFeaturesKeysList">
+          <!-- Populated and synchronized dynamically by script.js -->
+        </div>
+
+        <div class="notes-key-card" style="margin-top: 1.25rem; padding: 0.85rem 1rem;">
+          <h4 style="font-size: 0.85rem;">💡 How to get a free Google Gemini API key:</h4>
+          <p style="font-size: 0.8rem; margin-top: 0.25rem;">
+            Visit <strong>Google AI Studio</strong> (<a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">aistudio.google.com</a>), click <em>"Get API key"</em>, and create a free key in seconds.
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" id="clearAllKeysBtn">Clear All Keys</button>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary btn-sm" id="closeModalBottomBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===================================================================
+       Footer
+       =================================================================== -->
+  <footer>
+    <div class="container footer-inner">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/logo.svg" alt="StudyAI" width="28" height="28">
+        <span style="font-weight: 800; font-size: 1.1rem;">StudyAI</span>
+        <span style="color: var(--text-muted); font-size: 0.88rem;">— Next-Gen Student Study Companion</span>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        Built for students worldwide • Active Recall • Spaced Repetition • OCR &amp; AI
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>

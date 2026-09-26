@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyAI — AI Syllabus Mind Map (Task 4)</title>
+  <meta name="description" content="Transform long syllabus outlines and chapter breakdowns into interactive visual mind maps and concept trees.">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">
+          <img src="../assets/logo.svg" alt="StudyAI Logo" width="34" height="34">
+        </div>
+        <span class="brand-name">StudyAI</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li class="nav-item-dropdown">
+            <a href="../index.html#features" class="nav-link dropdown-toggle" id="featuresDropdownBtn">
+              <span>Features</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+            <div class="features-dropdown-menu" id="featuresDropdownMenu">
+              <div class="dropdown-header">
+                <span>AI Student Academic Suite</span>
+                <span class="dropdown-badge">10 Tools</span>
+              </div>
+              <div class="dropdown-grid">
+                <a href="resume.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #eef2ff; color: #4f46e5;">💼</span>
+                  <div>
+                    <div class="dropdown-title">Task 1: AI Resume Builder</div>
+                    <div class="dropdown-desc">ATS optimization, templates &amp; PDF</div>
+                  </div>
+                </a>
+                <a href="notes.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: var(--primary-light); color: var(--primary);">📘</span>
+                  <div>
+                    <div class="dropdown-title">Task 2: AI Notes Generator</div>
+                    <div class="dropdown-desc">Cornell notes &amp; Markdown sheets</div>
+                  </div>
+                </a>
+                <a href="ppt.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #e0f2fe; color: #0284c7;">📊</span>
+                  <div>
+                    <div class="dropdown-title">Task 3: Presentation (PPT)</div>
+                    <div class="dropdown-desc">Structured slide deck &amp; PPTX export</div>
+                  </div>
+                </a>
+                <a href="mindmap.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #fdf4ff; color: #a21caf;">🧠</span>
+                  <div>
+                    <div class="dropdown-title">Task 4: Syllabus Mind Map</div>
+                    <div class="dropdown-desc">Visual tree hierarchy &amp; outlines</div>
+                  </div>
+                </a>
+                <a href="sheets.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #ecfdf5; color: #059669;">📈</span>
+                  <div>
+                    <div class="dropdown-title">Task 5: Google Sheets Backend</div>
+                    <div class="dropdown-desc">Live database &amp; AI trend insights</div>
+                  </div>
+                </a>
+                <a href="quiz.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: var(--success-light); color: var(--success);">📝</span>
+                  <div>
+                    <div class="dropdown-title">Task 6: Dynamic Quiz / MCQ</div>
+                    <div class="dropdown-desc">Custom questions &amp; instant feedback</div>
+                  </div>
+                </a>
+                <a href="doubts.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #ecfeff; color: #0891b2;">💬</span>
+                  <div>
+                    <div class="dropdown-title">Task 7: Doubt Solver Bot</div>
+                    <div class="dropdown-desc">24/7 tutor with speech read-out</div>
+                  </div>
+                </a>
+                <a href="flashcards.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #fffbeb; color: #d97706;">🗂</span>
+                  <div>
+                    <div class="dropdown-title">Task 8: AI 3D Flashcards</div>
+                    <div class="dropdown-desc">Active recall &amp; flippable revision</div>
+                  </div>
+                </a>
+                <a href="planner.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #f5f3ff; color: #7c3aed;">📅</span>
+                  <div>
+                    <div class="dropdown-title">Task 9: Study Timetable</div>
+                    <div class="dropdown-desc">Day-wise schedule &amp; checklist</div>
+                  </div>
+                </a>
+                <a href="ocr.html" class="dropdown-item">
+                  <span class="dropdown-icon" style="background: #fef2f2; color: #dc2626;">📸</span>
+                  <div>
+                    <div class="dropdown-title">Task 10: Photo Notes OCR</div>
+                    <div class="dropdown-desc">Extract text &amp; synthesize summary</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer">
+                <a href="../index.html#features" class="dropdown-view-all">View All in Hub Grid →</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="../index.html#about" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="../index.html#features" class="ada-nav-cta-btn" id="navCtaBtn" title="Explore All Tools" style="text-decoration: none;">
+          <span>Explore Tools</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <button class="api-badge-btn" id="apiKeyBadgeBtn" title="Configure Google Gemini API Key">
+          <span class="status-dot" id="apiStatusDot"></span>
+          <span id="apiStatusText">Key Required</span>
+        </button>
+
+        <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <span id="themeIcon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html" class="mobile-nav-link">🏠 Home</a></li>
+      <li><a href="../index.html#features" class="mobile-nav-link">✨ Features</a></li>
+      <li><a href="../index.html#about" class="mobile-nav-link">ℹ️ About StudyAI</a></li>
+      <li class="mobile-nav-divider"></li>
+      <li class="mobile-nav-heading">All 10 Dedicated Pages</li>
+      <li><a href="resume.html" class="mobile-nav-link">💼 Task 1: AI Resume Builder</a></li>
+      <li><a href="notes.html" class="mobile-nav-link">📘 Task 2: AI Notes Generator</a></li>
+      <li><a href="ppt.html" class="mobile-nav-link">📊 Task 3: AI Presentation (PPT)</a></li>
+      <li><a href="mindmap.html" class="mobile-nav-link active">🧠 Task 4: AI Syllabus Mind Map</a></li>
+      <li><a href="sheets.html" class="mobile-nav-link">📈 Task 5: Google Sheets as Backend</a></li>
+      <li><a href="quiz.html" class="mobile-nav-link">📝 Task 6: AI Dynamic Quiz / MCQ</a></li>
+      <li><a href="doubts.html" class="mobile-nav-link">💬 Task 7: AI Subject Tutor Bot</a></li>
+      <li><a href="flashcards.html" class="mobile-nav-link">🗂 Task 8: AI 3D Flashcards</a></li>
+      <li><a href="planner.html" class="mobile-nav-link">📅 Task 9: AI Study Timetable</a></li>
+      <li><a href="ocr.html" class="mobile-nav-link">📸 Task 10: Photo Notes OCR</a></li>
+    </ul>
+  </div>
+
+  <!-- Breadcrumb Banner -->
+  <div class="standalone-top-banner">
+    <div class="container standalone-banner-inner">
+      <div class="page-breadcrumb">
+        <a href="../index.html">← All Study Tools</a>
+        <span>/</span>
+        <span style="font-weight: 700; color: var(--text-primary);">Task 4: AI Mind Map Generator for Syllabus</span>
+      </div>
+      <div>
+        <span class="tool-badge popular">Task 4 of 10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App Layout -->
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="tool-view-layout">
+
+      <!-- Left Sidebar: Controls & Form -->
+      <div class="tool-sidebar-panel">
+        <div class="tool-header-block">
+          <h2><span>🧠</span> Syllabus Mind Map</h2>
+          <p>Break down heavy exam syllabi into visual topic trees with colored module branches and concept subnodes.</p>
+        </div>
+
+        <!-- Feature API Key Status Box -->
+        <div class="feature-api-box" data-feature="mindmap">
+          <div class="feature-api-header">
+            <div class="feature-api-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-6 6l7-7m-7 7l-2-2m-2-2l-2-2m-2-2l-2-2M3 21l7-7m0 0l2 2m-2-2l-2-2"/></svg>
+              <span>Mind Map AI Key</span>
+            </div>
+            <span class="feature-api-badge demo" id="featureBadge-mindmap">
+              <span class="feature-api-badge-dot"></span>
+              <span class="badge-text">Key Required</span>
+            </span>
+          </div>
+          <div class="feature-api-body">
+            <div class="feature-api-input-wrap">
+              <input type="password" id="featureKeyInput-mindmap" class="feature-api-input" placeholder="Gemini API Key..." autocomplete="off">
+              <button type="button" class="btn-eye-toggle" data-target="featureKeyInput-mindmap" title="Show/Hide Key">👁</button>
+            </div>
+            <div class="feature-api-actions">
+              <button type="button" class="btn btn-primary btn-xs save-feature-key-btn" data-feature="mindmap">Save Key</button>
+              <button type="button" class="btn btn-secondary btn-xs test-feature-key-btn" data-feature="mindmap">Test</button>
+              <button type="button" class="btn btn-outline btn-xs clear-feature-key-btn" data-feature="mindmap">Clear</button>
+            </div>
+            <div class="feature-api-helper">API key required to generate mind maps with Gemini.</div>
+          </div>
+        </div>
+
+        <form id="mindmapForm">
+          <div class="form-group">
+            <label class="form-label" for="mindmapTopicInput">Syllabus Topic or Course Outline <span class="required">*</span></label>
+            <textarea id="mindmapTopicInput" class="form-control" rows="4" placeholder="e.g. Organic Chemistry: Hydrocarbons, Alcohols & Reactions..." required></textarea>
+            
+            <div class="chips-container" style="margin-top: 0.5rem;">
+              <span class="chip mindmap-chip" data-topic="AP Biology Cellular Energetics &amp; Genetics">🧬 AP Biology</span>
+              <span class="chip mindmap-chip" data-topic="Data Structures &amp; Algorithms in CS">💻 CS Algorithms</span>
+              <span class="chip mindmap-chip" data-topic="Calculus &amp; Multivariable Integration">📐 Calculus III</span>
+              <span class="chip mindmap-chip" data-topic="World War II Geopolitics &amp; Battle Maps">🌍 World History</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="generateMindmapBtn" style="padding: 0.9rem;">
+            <span>🧠</span> Generate Syllabus Map
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Main Panel: Mind Map Canvas -->
+      <div class="tool-main-panel">
+        <div class="loading-indicator" id="mindmapLoading">
+          <div class="spinner"></div>
+          <div class="loading-status-text">Drafting Visual Syllabus Tree...</div>
+          <div class="loading-subtext">Deconstructing units, core concepts, and cross-topic dependencies.</div>
+        </div>
+
+        <div id="mindmapOutputArea">
+          <div class="empty-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="48" height="48"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <h4>No mind map generated yet</h4>
+            <p>Paste a syllabus or choose a preset topic on the left to generate an interactive topic map.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Multi-Key Modal -->
+  <div class="modal-overlay" id="apiKeyModal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 1.35rem;">🔑</span>
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800;">AI Feature API Keys Manager</h3>
+            <span style="font-size: 0.78rem; color: var(--text-muted);" id="modalActiveKeyCount">Every AI feature works independently</span>
+          </div>
+        </div>
+        <button class="icon-btn" id="closeApiKeyModalBtn">✕</button>
+      </div>
+      <div class="modal-body scrollable">
+        <div class="multi-key-batch-box">
+          <div class="multi-key-batch-header">
+            <span class="multi-key-batch-title"><span>⚡</span> Quick Setup: Single Key for All 10 Features</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+            Enter your Google Gemini API key to activate all 10 features at once.
+          </p>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <div class="feature-api-input-wrap" style="flex: 1; min-width: 240px;">
+              <input type="password" id="batchApiKeyInput" class="feature-api-input" placeholder="Paste Gemini API key (AIzaSy...)">
+              <button type="button" class="btn-eye-toggle" data-target="batchApiKeyInput">👁</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" id="batchApplyKeyBtn">Apply to All Features</button>
+          </div>
+        </div>
+        <div class="features-keys-list" id="modalFeaturesKeysList"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" id="clearAllKeysBtn">Clear All Keys</button>
+        <button class="btn btn-secondary btn-sm" id="closeModalBottomBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <footer>
+    <div class="container footer-inner">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="../assets/logo.svg" alt="StudyAI" width="28" height="28">
+        <span style="font-weight: 800; font-size: 1.1rem;">StudyAI</span>
+        <span style="color: var(--text-muted); font-size: 0.88rem;">— Task 4: AI Mind Map Generator for Syllabus</span>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        Hierarchical Data Structures • Nested Outlines • Interactive Trees • Syllabus Mapping
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
